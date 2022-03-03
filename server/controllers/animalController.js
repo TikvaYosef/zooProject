@@ -12,13 +12,12 @@ const getById = async (req, res) => {
         .catch((err) => res.status(404).send({ massege: err }))
 }
 
-const addanimal = async (req, res) => {
+const addanimal = async (req , res) => {
     await animal
         .create(req.body)
-        .then(result => res.send(result))
+        .then(res => res.send(res))
         .catch(err => res.status(404).send({ massage: err }))
 }
-
 
 const update = async (req, res) => {
     const animall = await animal.find(animal => animal.id === parseInt(req.params.id));

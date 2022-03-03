@@ -2,7 +2,7 @@ const animalRouter = require("express").Router();
 const animalRequestHeandler = require("../controllers/animalController")
 
 
-animalRouter.get("/", animalRequestHeandler.getAll)
+animalRouter.get("/animals", animalRequestHeandler.getAll)
 
 animalRouter.get("/:id", animalRequestHeandler.getById)
 

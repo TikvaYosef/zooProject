@@ -18,12 +18,13 @@ require("./config/passport")(passport)
 
 
 app.get("/", (req, res) => res.send("server is up"))
-
+app.use("/employees",employeeRouter)
 app.use("/employee", employeeRouter)
 app.use("/postemployee", employeeRouter)
 app.use("/updateemployee", employeeRouter)
 app.use("/deleteemployee", employeeRouter)
 
+app.use("./animals",animalsrouter)
 app.use("/animal", animalsrouter)
 app.use("/postanimal", animalsrouter)
 app.use("/updateanimal", animalsrouter)
