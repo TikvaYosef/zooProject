@@ -30,8 +30,8 @@ app.use("/postanimal", animalsrouter)
 app.use("/updateanimal", animalsrouter)
 app.use("/deleteanimal", animalsrouter)
 
-app.use("/employees", passport.authenticate("jwt", { session: false }), employeeRouter)
-app.use("/animals", passport.authenticate("jwt", { session: false }), animalsrouter)
+// app.use("/employees", passport.authenticate("jwt", { session: false }), employeeRouter)
+// app.use("/animals", passport.authenticate("jwt", { session: false }), animalsrouter)
 
 
 app.use("/auth", userrouter);
