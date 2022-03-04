@@ -7,6 +7,7 @@ const employeeRouter = require("./routes/employeesRouter")
 const animalsrouter = require("./routes/animalsRouter")
 const userrouter = require("./routes/usersRouter")
 const app = express();
+app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 9090
 app.listen(PORT)
@@ -30,8 +31,8 @@ app.use("/postanimal", animalsrouter)
 app.use("/updateanimal", animalsrouter)
 app.use("/deleteanimal", animalsrouter)
 
-// app.use("/employees", passport.authenticate("jwt", { session: false }), employeeRouter)
-// app.use("/animals", passport.authenticate("jwt", { session: false }), animalsrouter)
+app.use("/employees", passport.authenticate("jwt", { session: false }), employeeRouter)
+app.use("/animals", passport.authenticate("jwt", { session: false }), animalsrouter)
 
 
 app.use("/auth", userrouter);

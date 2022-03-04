@@ -2,10 +2,10 @@ const mongoose = require("mongoose")
 
 
 const employye = new mongoose.Schema({
-    employyeName: {type:String,required:true},
-    job: {type:String,required:true},
-    email: { type: String, required: true },
-    phone: { type: Number, required: true, max: 10 }
+    employyeName: {type:String,require:true},
+    job: {type:String,require:true},
+    email: { type: String, require: true },
+    phone: { type: Number, require: true }
 
 },
     { timestamps: true }
