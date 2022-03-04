@@ -6,7 +6,7 @@ animalRouter.get("/animals", animalRequestHeandler.getAll)
 
 animalRouter.get("/:id", animalRequestHeandler.getById)
 
-animalRouter.post("/", animalRequestHeandler.addanimal)
+animalRouter.post("/postanimal", animalRequestHeandler.addanimal)
 
 animalRouter.put("/:id", animalRequestHeandler.update)
 

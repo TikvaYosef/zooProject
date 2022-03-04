@@ -15,7 +15,7 @@ const getById = async (req, res) => {
 const addanimal = async (req , res) => {
     await animal
         .create(req.body)
-        .then(res => res.send(res))
+        .then(res =>  res.status(201).json({ success: true, message: req.body.animal }))
         .catch(err => res.status(404).send({ massage: err }))
 }
 
