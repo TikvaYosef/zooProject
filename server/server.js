@@ -25,7 +25,7 @@ app.use("/postemployee", employeeRouter)
 app.use("/updateemployee", employeeRouter)
 app.use("/deleteemployee", employeeRouter)
 
-app.use("./animals",animalsrouter)
+app.use("/animals",animalsrouter)
 app.use("/animal", animalsrouter)
 app.use("/postanimal", animalsrouter)
 app.use("/updateanimal", animalsrouter)
