@@ -8,8 +8,8 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
     await employees.findById(req.params.id)
-        .then((id) => { if (res.id == id) res.send(res) })
-        .catch((err) => res.status(404).send({ massege: err }))
+        .then((result) => { res.status(200).send(result) })
+        .catch((error) => res.status(404).send({ error: "employee not found" }))
 }
 
 const addEmployee = async (req, res) => {
@@ -17,32 +17,25 @@ const addEmployee = async (req, res) => {
         .create(req.body)
         .then(result => res.send(result))
         .catch(err => res.status(404).send({ massage: err }))
+
+
 }
 
-
 const update = async (req, res) => {
-    const employee = await employees.find(employee => employee.id === parseInt(req.params.id));
-    if (!employee) {
-        res.status(404).send('The employee with the given ID was not found.');
-    }
-    const { employyeName, job, email, phone } = req.body;
-    employee.employyeName = employyeName;
-    employee.job = job;
-    employee.email = email;
-    employee.phone = phone;
-
-    res.send(employee);
+    await employees
+        .findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(result => res.send(result))
+        .catch(err => res.status(404).send({ massage: err }))
 }
 
 const deleteOne = async (req, res) => {
-    const employee = await employees.find(employee => employee.id === parseInt(req.params.id));
-    if (!employee) {
+    employees.findByIdAndRemove(req.params.id, (err, result) => {
+        if (err) {
+            return res.status(500).json({ success: false, error: err })
+        };
+        res.status(201).json({ success: true, data: result, message: "employee deleted successfully" })
+    })
 
-        res.status(404).send('The employee with the given ID was not found.');
-    }
-    const index = employees.indexOf(employee);
-    employees.splice(index, 1);
-    res.send(employee);
 }
 
 module.exports = { getAll, getById, addEmployee, update, deleteOne }
